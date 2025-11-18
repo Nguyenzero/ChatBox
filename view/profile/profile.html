@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link rel="stylesheet" href="profile.css">
+</head>
+<body>
+
+<div class="container">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <h2 class="logo">Chat System</h2>
+
+        <button class="sidebar-btn" onclick="goChat()">Chat</button>
+        <button class="sidebar-btn active">Profile</button>
+        <button class="sidebar-btn logout" onclick="logout()">Logout</button>
+    </aside>
+
+    <!-- Nội dung Profile -->
+    <main class="profile-area">
+
+        <h1 class="title">Thông tin tài khoản</h1>
+
+        <div class="profile-card">
+
+            <div class="field">
+                <label>Họ tên</label>
+                <input type="text" id="fullname" placeholder="Nguyễn Văn A" value="Nguyễn Văn A">
+            </div>
+
+            <div class="field">
+                <label>Email</label>
+                <input type="email" id="email" placeholder="example@gmail.com" value="example@gmail.com">
+            </div>
+
+            <div class="field">
+                <label>Tên đăng nhập</label>
+                <input type="text" id="username" placeholder="username" value="username123">
+            </div>
+
+            <div class="field">
+                <label>Mật khẩu</label>
+                <input type="password" id="password" value="12345678">
+            </div>
+
+            <button class="save-btn">Lưu thay đổi</button>
+
+        </div>
+
+    </main>
+
+</div>
+
+<script src="profile.js"></script>
+</body>
+</html>

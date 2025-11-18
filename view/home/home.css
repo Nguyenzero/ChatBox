@@ -1,0 +1,56 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #000;
+  color: #fff;
+  text-align: center;
+}
+header {
+  width: 100%;
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+}
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+}
+.menu a {
+  margin: 0 10px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 16px;
+}
+.buttons button {
+  padding: 8px 16px;
+  margin-left: 10px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}
+.primary {
+  background: #3b82f6;
+  color: white;
+}
+.start-btn {
+  margin-top: 20px;
+  padding: 12px 24px;
+  background: #3b82f6;
+  border-radius: 10px;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+}
+main {
+  margin-top: 140px;
+}
+main h1 {
+  font-size: 64px;
+  margin: 0;
+}
+main p {
+  font-size: 20px;
+  margin-top: 10px;
+}

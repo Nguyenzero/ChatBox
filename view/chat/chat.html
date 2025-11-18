@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎓 EduBot AI - Tư vấn Giáo dục Thông minh</title>
+    <link rel="stylesheet" href="chat.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+<div class="container">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="logo">
+            <i class="fas fa-graduation-cap"></i>
+            <h3>EduBot AI</h3>
+        </div>
+        
+        <div class="top-buttons">
+            <button id="profileBtn" class="btn-secondary">
+                <i class="fas fa-user"></i> Profile
+            </button>
+            <button id="logoutBtn" class="btn-danger">
+                <i class="fas fa-sign-out-alt"></i> Logout
+            </button>
+        </div>
+
+        <button id="newChatBtn" class="btn-primary">
+            <i class="fas fa-plus"></i> Bắt đầu tư vấn mới
+        </button>
+
+        <div class="info-section">
+            <h4><i class="fas fa-lightbulb"></i> Tôi có thể giúp bạn:</h4>
+            <ul class="features">
+                <li><i class="fas fa-check"></i> Tư vấn ngành học phù hợp</li>
+                <li><i class="fas fa-check"></i> Đề xuất trường đại học</li>
+                <li><i class="fas fa-check"></i> Thông tin điểm chuẩn, học phí</li>
+                <li><i class="fas fa-check"></i> Định hướng nghề nghiệp</li>
+            </ul>
+        </div>
+
+        <div class="history-section">
+            <h4><i class="fas fa-history"></i> Lịch sử Chat</h4>
+            <div id="historyList" class="history-list">
+                <!-- History items will be added here -->
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Chat Area -->
+    <main class="chat-area">
+        
+        <div class="chat-header">
+            <h2><i class="fas fa-robot"></i> Trợ lý AI EduBot</h2>
+            <div class="status">
+                <span class="status-dot online"></span>
+                <span id="statusText">Đang hoạt động</span>
+            </div>
+        </div>
+
+        <div id="chatBox" class="chat-box">
+            <!-- Messages will be added here -->
+            <div class="welcome-message">
+                <i class="fas fa-graduation-cap fa-3x"></i>
+                <h3>Chào mừng đến với EduBot AI! 🎓</h3>
+                <p>Tôi là trợ lý tư vấn giáo dục thông minh, sử dụng AI để giúp bạn:</p>
+                <ul>
+                    <li>🎯 Tìm ngành học phù hợp nhất với năng lực và sở thích</li>
+                    <li>🏫 Đề xuất trường đại học tốt nhất theo điều kiện của bạn</li>
+                    <li>💡 Cung cấp thông tin chi tiết về trường, ngành, điểm chuẩn</li>
+                </ul>
+                <p><strong>Nhấn "Bắt đầu tư vấn mới" để bắt đầu!</strong></p>
+            </div>
+        </div>
+
+        <div class="input-area">
+            <textarea 
+                id="messageInput" 
+                placeholder="Nhập tin nhắn... (Ấn Enter để gửi, Shift+Enter để xuống dòng)"
+                rows="1"></textarea>
+            <button id="sendBtn" class="btn-send">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+
+        <div class="typing-indicator" id="typingIndicator" style="display: none;">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span>EduBot đang suy nghĩ...</span>
+        </div>
+
+    </main>
+</div>
+
+<!-- Loading Overlay -->
+<div id="loadingOverlay" class="loading-overlay" style="display: none;">
+    <div class="spinner"></div>
+    <p>Đang phân tích và tìm ngành phù hợp...</p>
+</div>
+
+<script src="chat.js"></script>
+</body>
+</html>

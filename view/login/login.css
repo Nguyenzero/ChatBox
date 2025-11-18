@@ -1,0 +1,112 @@
+body {
+    background: #000;
+    color: white;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    width: 350px;
+    text-align: left;
+}
+
+.logo {
+    margin: 0 auto;
+    margin-bottom: 12px;
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    background: white;
+    color: black;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 24px;
+}
+
+label {
+    font-size: 14px;
+    margin-top: 10px;
+    display: block;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    border: 1px solid #333;
+    background: #111;
+    color: white;
+}
+
+.btn-primary {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    background: #2563eb;
+    border: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 5px;
+}
+
+.btn-secondary {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    border-radius: 8px;
+    background: white;
+    color: black;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.divider {
+    text-align: center;
+    margin: 15px 0;
+    color: #777;
+}
+
+.btn-google {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    background: white;
+    color: black;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+.g-icon {
+    font-weight: bold;
+}
+
+.forgot {
+    margin-top: 15px;
+    text-align: center;
+    color: #888;
+}
+
+.forgot a {
+    color: #60a5fa;
+    text-decoration: none;
+}
