@@ -9,12 +9,14 @@ const historyList = document.getElementById("historyList");
 const input = document.getElementById("messageInput");
 const sendBtn = document.getElementById("sendBtn");
 const newChatBtn = document.getElementById("newChatBtn");
+const startConsultBtn = document.getElementById("startConsultBtn");
 const typingIndicator = document.getElementById("typingIndicator");
 const loadingOverlay = document.getElementById("loadingOverlay");
 const statusText = document.getElementById("statusText");
 
 let currentSessionId = null;
 let isWaitingForResponse = false;
+let isConsultationMode = false; // Chế độ tư vấn hay chat tự do
 let history = JSON.parse(localStorage.getItem("chatHistory")) || [];
 
 /* ===== INITIALIZATION ===== */
@@ -27,6 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
 function setupEventListeners() {
     sendBtn.onclick = sendMessage;
     newChatBtn.onclick = startNewChat;
+    startConsultBtn.onclick = startConsultation;
     
     input.addEventListener('keydown', (e) => {
         if (e.key === 'Enter' && !e.shiftKey) {
@@ -65,7 +68,7 @@ function checkUserLogin() {
 /* ===== CHAT SESSION MANAGEMENT ===== */
 async function startNewChat() {
     try {
-        showLoading('Đang khởi tạo session...');
+        showLoading('Đang khởi tạo chat mới...');
         
         const currentUser = JSON.parse(localStorage.getItem('currentUser') || '{}');
         const userId = currentUser.id || null;
@@ -82,6 +85,7 @@ async function startNewChat() {
         
         if (data.status === 'success') {
             currentSessionId = data.session_id;
+            isConsultationMode = false;
             
             // Clear chat box
             chatBox.innerHTML = '';
@@ -90,7 +94,7 @@ async function startNewChat() {
             addMessage(data.message, 'ai');
             
             // Save to history
-            saveToHistory('Bắt đầu tư vấn mới', data.message);
+            saveToHistory('Chat mới', data.message);
             
             hideLoading();
             input.focus();
@@ -104,6 +108,63 @@ async function startNewChat() {
     }
 }
 
+async function startConsultation() {
+    try {
+        showLoading('Đang khởi tạo session tư vấn...');
+        
+        const currentUser = JSON.parse(localStorage.getItem('currentUser') || '{}');
+        const userId = currentUser.id || null;
+        
+        const response = await fetch(`${API_BASE_URL}/start`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ user_id: userId })
+        });
+        
+        const data = await response.json();
+        
+        if (data.status === 'success') {
+            currentSessionId = data.session_id;
+            isConsultationMode = true;
+            
+            // Clear chat box
+            chatBox.innerHTML = '';
+            
+            // Send consultation command
+            setTimeout(async () => {
+                const consultResponse = await fetch(`${API_BASE_URL}/message`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        session_id: currentSessionId,
+                        message: 'Bắt đầu tư vấn'
+                    })
+                });
+                
+                const consultData = await consultResponse.json();
+                
+                if (consultData.status === 'success') {
+                    addMessage(consultData.reply, 'ai');
+                    saveToHistory('Bắt đầu tư vấn', consultData.reply);
+                }
+                
+                hideLoading();
+                input.focus();
+            }, 500);
+        } else {
+            throw new Error(data.message || 'Không thể bắt đầu tư vấn');
+        }
+    } catch (error) {
+        console.error('Error starting consultation:', error);
+        hideLoading();
+        alert('Lỗi khi bắt đầu tư vấn: ' + error.message);
+    }
+}
+
 /* ===== MESSAGE HANDLING ===== */
 async function sendMessage() {
     if (isWaitingForResponse) {
@@ -114,9 +175,9 @@ async function sendMessage() {
     if (text === "") {
         return;
     }
-    
-    // Check if session exists
+      // Check if session exists
     if (!currentSessionId) {
+        // Tự động tạo session chat mới
         await startNewChat();
         // Wait a bit then send message
         setTimeout(() => {
