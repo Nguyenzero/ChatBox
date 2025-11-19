@@ -13,7 +13,6 @@
 ✅ **Tư vấn ngành học phù hợp** - Dựa trên sở thích, năng lực, tính cách  
 ✅ **Đề xuất trường đại học** - Theo khu vực, học phí, điểm chuẩn  
 ✅ **Cung cấp thông tin chi tiết** - Về trường, ngành, điểm chuẩn, học phí  
-✅ **Tự động học và mở rộng** - Thu thập dữ liệu mới từ web  
 ✅ **Chatbot thông minh** - Chỉ trả lời câu hỏi về giáo dục  
 
 ---
